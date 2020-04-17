@@ -1,21 +1,42 @@
 # ServiciosREST
 
-Ejemplo de implementación de servidios REST en java con JAX-RS.
+Ejemplo de implementación de servicios REST en java con JAX-RS.
 
-### Paso a paso 🔧
+## URL Consumo de servicios ⚙️
 
-* Crear proyecto Java WEB
-* Agregar las librerias de:
+### POST 
+_HTTP/1.1_
+* **URL:** /ServiciosREST/app/restServices/pruebaPOST
+* **Host:** localhost:8080
+* **Content-Type:** application/json
+* **body:** {"nombre":"Sebastian"}
+
+### GET
+_HTTP/1.1_
+* **URL:** /ServiciosREST/app/restServices/pruebaGET
+* **Host:** localhost:8080
+
+## Paso a paso 🔧
+
+* Crear proyecto Java WEB.
+
+* Agregar las librarías de:
+
 ``` bash
+
 - JAX-RS 2.0
+
 - Jersey 2.5.1 (JAX-RS RI)
+
 ```
 
-* Se crean las clases para configuracion y servicios
+* Se crean las clases para configuración y servicios.
 
-#### Configuracion:
+#### Configuración:
 ``` java
+
 package XXXX;
+
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
@@ -23,10 +44,15 @@ import javax.ws.rs.core.Application;
 public class RestConf extends Application {
 
 }
+
 ```
 
+
+
 #### Servicios
+
 ``` java
+
 package REST;
 
 import DTO.Respuesta;
@@ -38,7 +64,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-Path("yyyyyyyyyyyyy")
+Path("XXXXXXXXXX")
 public class RestServices {
 
     @POST
@@ -57,14 +83,14 @@ public class RestServices {
     public String pruebaGET() {
         return "Prueba GET OK.";
     }
-
 }
+
 ```
 
 * Se deben crear para el servicio POST dos DTO para el manejo de Consumes y Produces
+
 ``` java
 package DTO;
-
 public class Respuesta {
 
     private int codigo;
@@ -119,6 +145,9 @@ public class Usuario {
     }
 }
 ```
+
+## Estructura
+![ServiciosREST Estructura](https://github.com/SebastianP07/ServiciosREST/web/images/Estructura_proyecto.jpg)
 
 ## Autor ✒️
 
