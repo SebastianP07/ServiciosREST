@@ -147,7 +147,7 @@ public class Usuario {
 ```
 
 ## Estructura
-![ServiciosREST Estructura](https://github.com/SebastianP07/ServiciosREST/web/images/Estructura_proyecto.jpg)
+![ScreenShot](https://github.com/SebastianP07/ServiciosREST/web/images/Estructura_proyecto.jpg)
 
 ## Autor ✒️
 
