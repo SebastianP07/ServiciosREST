@@ -147,11 +147,10 @@ public class Usuario {
 ```
 
 ## Estructura 🔩
-![ServiciosREST Estructura](https://github.com/SebastianP07/ServiciosREST/web/images/Estructura_proyecto.jpg)
+![ScreenShot](https://raw.githubusercontent.com/SebastianP07/ServiciosREST/master/web/images/Estructura_proyecto.jpg)
 
 ## Más documentación 📖
 * [Tutorial de Servicios REST con Java JAX-RS](https://www.oscarblancarteblog.com/api-rest-java-jax-rs/)
-
 
 ## Autor ✒️
 
