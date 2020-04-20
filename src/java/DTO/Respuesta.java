@@ -1,9 +1,12 @@
 package DTO;
 
+import java.util.ArrayList;
+
 public class Respuesta {
     
     private int codigo;
     private String descripcion;
+    private ArrayList<Object> objetoRespuesta;
 
     /**
      * @return the codigo
@@ -31,5 +34,19 @@ public class Respuesta {
      */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    /**
+     * @return the objetoRespuesta
+     */
+    public ArrayList<Object> getObjetoRespuesta() {
+        return objetoRespuesta;
+    }
+
+    /**
+     * @param objetoRespuesta the objetoRespuesta to set
+     */
+    public void setObjetoRespuesta(ArrayList<Object> objetoRespuesta) {
+        this.objetoRespuesta = objetoRespuesta;
     }
 }
