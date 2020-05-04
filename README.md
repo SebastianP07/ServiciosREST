@@ -145,6 +145,119 @@ public class Usuario {
     }
 }
 ```
+# Persistencia a BD PostgreSQL con JDBC
+
+* Agregar la libreria
+
+``` bash
+
+- PostgreSQL JDBC Driver
+
+```
+
+* Crear la clase para la conexión a la BD
+
+### Ejemplo
+``` java
+
+package Conexion;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class ConexionBD {
+
+    public static Connection connection;
+    private static String user = "userDb";
+    private static String password = "contraseñaBD";
+
+    public Connection conectar() {
+        try {
+            Class.forName("org.postgresql.Driver");
+            connection = DriverManager.getConnection("jdbc:postgresql://[IP]:[Port]/[name DB]", user, password);
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Error de conexion PostgreSQL" + e);
+        }
+        return connection;
+    }
+
+    public void desconectarse() {
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println("Error al desconectar PostgreSQL " + e);
+        }
+    }
+}
+
+```
+
+* Se crea la Interface para el manejo de metodos dentro de la clase para el DAO
+
+### Ejemplo
+``` java
+
+package Interface;
+
+import DTO.Respuesta;
+
+public interface interfaceUser {
+
+    public abstract Respuesta getUsers();
+}
+
+```
+
+* Se crea la clase para la implementacion de la conexion JDBC
+
+### Ejemplo
+``` java
+
+package DAO;
+
+import Conexion.ConexionBD;
+import DTO.Respuesta;
+import DTO.Usuario;
+import Interface.interfaceUser;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+public class UserDAO implements interfaceUser {
+
+    private ConexionBD cn = new ConexionBD();
+    
+    @Override
+    public Respuesta getUsers() {
+        Respuesta rta = new Respuesta();
+        ArrayList<Object> objetoRespuesta = new ArrayList<>();
+        String consultaSql = "SELECT * FROM usuario;";
+        try {
+            PreparedStatement ps = cn.conectar().prepareStatement(consultaSql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setNombre(rs.getString("NOMBRE"));
+                objetoRespuesta.add(usuario);
+            }
+            rta.setCodigo(1);
+            rta.setDescripcion("Consulta Exitosa.");
+            rta.setObjetoRespuesta(objetoRespuesta);
+        } catch (SQLException e) {
+            rta.setCodigo(0);
+            rta.setDescripcion("Error obtenerUsuario: " + e);
+        } finally {
+            cn.desconectarse();
+        }
+        return rta;
+    }
+}
+
+
+```
+
 
 ## Estructura 🔩
 ![ScreenShot](https://raw.githubusercontent.com/SebastianP07/ServiciosREST/master/web/images/Estructura_proyecto.jpg)
