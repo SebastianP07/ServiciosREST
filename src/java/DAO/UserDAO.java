@@ -17,7 +17,6 @@ public class UserDAO implements interfaceUser {
     public Respuesta getUsers() {
         Respuesta rta = new Respuesta();
         ArrayList<Object> objetoRespuesta = new ArrayList<>();
-
         String consultaSql = "SELECT * FROM usuario;";
         try {
             PreparedStatement ps = cn.conectar().prepareStatement(consultaSql);
@@ -36,8 +35,6 @@ public class UserDAO implements interfaceUser {
         } finally {
             cn.desconectarse();
         }
-
         return rta;
     }
-
 }
