@@ -3,16 +3,18 @@ package DAO;
 import Conexion.ConexionBD;
 import DTO.Respuesta;
 import DTO.Usuario;
+import Interface.interfaceUser;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class UserDAO {
+public class UserDAO implements interfaceUser {
 
     private ConexionBD cn = new ConexionBD();
     
-    public Respuesta obtenerUsuario() {
+    @Override
+    public Respuesta getUsers() {
         Respuesta rta = new Respuesta();
         ArrayList<Object> objetoRespuesta = new ArrayList<>();
 
